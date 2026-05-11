@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    colors.xml — Streaky Design System
+    Material Design 3 · Dark Theme
+-->
+<resources>
+
+    <!-- ══════════════════════════════════════════
+         ФОНЫ И ПОВЕРХНОСТИ
+         ══════════════════════════════════════════ -->
+    <color name="md_theme_dark_background">#FF121212</color>
+    <color name="md_theme_dark_surface">#FF1E1E1E</color>
+    <color name="md_theme_dark_surfaceVariant">#FF2A2A2A</color>
+
+    <!-- Поверхности с elevation -->
+    <color name="surface_elevation_1">#FF1E1E1E</color>
+    <color name="surface_elevation_2">#FF222222</color>
+    <color name="surface_elevation_3">#FF272727</color>
+
+    <!-- ══════════════════════════════════════════
+         PRIMARY — Зелёный акцент
+         ══════════════════════════════════════════ -->
+    <color name="md_theme_dark_primary">#FF4CAF50</color>
+    <color name="md_theme_dark_onPrimary">#FFFFFFFF</color>
+    <color name="md_theme_dark_primaryContainer">#FF1B5E20</color>
+    <color name="md_theme_dark_onPrimaryContainer">#FFC8E6C9</color>
+
+    <!-- ══════════════════════════════════════════
+         SECONDARY — Оранжевый (стрик / огонь)
+         ══════════════════════════════════════════ -->
+    <color name="md_theme_dark_secondary">#FFFF6B35</color>
+    <color name="md_theme_dark_onSecondary">#FFFFFFFF</color>
+    <color name="md_theme_dark_secondaryContainer">#FF4A1A00</color>
+    <color name="md_theme_dark_onSecondaryContainer">#FFFFD5C2</color>
+
+    <!-- ══════════════════════════════════════════
+         ТЕКСТ
+         ══════════════════════════════════════════ -->
+    <color name="md_theme_dark_onBackground">#FFFFFFFF</color>
+    <color name="md_theme_dark_onSurface">#FFE8E8E8</color>
+    <color name="md_theme_dark_onSurfaceVariant">#FF9E9E9E</color>
+    <color name="md_theme_dark_outline">#FF424242</color>
+    <color name="md_theme_dark_outlineVariant">#FF2E2E2E</color>
+
+    <!-- ══════════════════════════════════════════
+         ERROR
+         ══════════════════════════════════════════ -->
+    <color name="md_theme_dark_error">#FFCF6679</color>
+    <color name="md_theme_dark_onError">#FFFFFFFF</color>
+    <color name="streaky_error">#FFCF6679</color>
+    <color name="streaky_error_ripple">#1FCF6679</color>
+
+    <!-- ══════════════════════════════════════════
+         СОСТОЯНИЯ ПРИВЫЧЕК
+         ══════════════════════════════════════════ -->
+    <color name="habit_completed_background">#FF1B5E20</color>
+    <color name="habit_completed_tint">#FF4CAF50</color>
+    <color name="habit_incomplete_background">#FF1E1E1E</color>
+    <color name="habit_incomplete_tint">#FF616161</color>
+
+    <!-- ══════════════════════════════════════════
+         СТРИК БЕЙДЖ
+         ══════════════════════════════════════════ -->
+    <color name="streak_badge_background">#FF4A1A00</color>
+    <color name="streak_badge_text">#FFFF6B35</color>
+    <color name="streaky_secondary">#FFFF6B35</color>
+    <color name="streaky_gold">#FFFFD700</color>
+
+    <!-- ══════════════════════════════════════════
+         RIPPLE / OVERLAY
+         ══════════════════════════════════════════ -->
+    <color name="scrim_dark">#99000000</color>
+    <color name="ripple_on_surface">#33FFFFFF</color>
+    <color name="ripple_on_primary">#33FFFFFF</color>
+    <color name="streaky_ripple">#33FFFFFF</color>
+
+    <!-- ══════════════════════════════════════════
+         ПРОГРЕСС
+         ══════════════════════════════════════════ -->
+    <color name="progress_track_inactive">#FF2A2A2A</color>
+    <color name="progress_track_active">#FF4CAF50</color>
+
+    <!-- ══════════════════════════════════════════
+         BOTTOM SHEET
+         ══════════════════════════════════════════ -->
+    <color name="bottom_sheet_background">#FF1E1E1E</color>
+    <color name="bottom_sheet_drag_handle">#FF424242</color>
+
+    <!-- ══════════════════════════════════════════
+         ДИАЛОГ (StatsActivity — удаление)
+         ══════════════════════════════════════════ -->
+    <color name="streaky_dialog_surface">#FF252525</color>
+
+    <!-- ══════════════════════════════════════════
+         СТАТУС / НАВИГАЦИЯ БАР
+         ══════════════════════════════════════════ -->
+    <color name="status_bar_color">#FF121212</color>
+    <color name="navigation_bar_color">#FF121212</color>
+
+    <!-- ══════════════════════════════════════════
+         РАЗНОЕ
+         ══════════════════════════════════════════ -->
+    <color name="streaky_divider">#FF2A2A2A</color>
+    <color name="streaky_button_disabled">#FF2A2A2A</color>
+    <color name="streaky_icon_card_default">#FF2A2A2A</color>
+    <color name="transparent">#00000000</color>
+
+</resources>

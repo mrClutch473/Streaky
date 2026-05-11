@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_slide_fade_in.xml — res/anim/
+    Single card entrance: translates up from +40dp while fading in.
+    The stagger delay (i * 50ms) is applied programmatically in the adapter
+    by setting startOffset on the loaded animation object.
+
+    DecelerateInterpolator: fast initial movement, gentle settle.
+-->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true">
+
+    <!-- Translate: slide up from +40dp to resting position -->
+    <translate
+        android:fromYDelta="40dp"
+        android:toYDelta="0dp"
+        android:duration="350"
+        android:interpolator="@android:anim/decelerate_interpolator" />
+
+    <!-- Fade: 0 → 1 -->
+    <alpha
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
+        android:duration="300"
+        android:interpolator="@android:anim/decelerate_interpolator" />
+
+</set>

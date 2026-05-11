@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    empty_state_fade_in.xml — res/anim/
+    EmptyState layout entrance: fade + subtle scale up from 95% to 100%.
+    Creates a gentle "breathing in" appearance without being distracting.
+-->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true">
+
+    <!-- Fade in -->
+    <alpha
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
+        android:duration="400"
+        android:interpolator="@android:anim/decelerate_interpolator" />
+
+    <!-- Subtle scale from 95% to 100% -->
+    <scale
+        android:fromXScale="0.95"
+        android:toXScale="1.0"
+        android:fromYScale="0.95"
+        android:toYScale="1.0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:duration="400"
+        android:interpolator="@android:anim/decelerate_interpolator" />
+
+</set>

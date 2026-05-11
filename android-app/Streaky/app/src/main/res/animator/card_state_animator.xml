@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    card_state_animator.xml — res/animator/
+    StateListAnimator for the habit card (MaterialCardView).
+
+    States handled:
+      • pressed  → elevation 8dp + scale 0.97  (tactile feedback)
+      • default  → elevation 2dp + scale 1.0   (resting state)
+
+    "Completed" background change is NOT in the state animator;
+    it's driven by ValueAnimator in code for smooth ARGB interpolation.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- PRESSED state -->
+    <item android:state_pressed="true">
+        <set android:ordering="together">
+
+            <!-- Elevation: 2dp → 8dp -->
+            <objectAnimator
+                android:propertyName="elevation"
+                android:valueTo="8dp"
+                android:valueType="floatType"
+                android:duration="100"
+                android:interpolator="@android:interpolator/fast_out_slow_in" />
+
+            <!-- Scale down slightly for press feel -->
+            <objectAnimator
+                android:propertyName="scaleX"
+                android:valueTo="0.97"
+                android:valueType="floatType"
+                android:duration="100"
+                android:interpolator="@android:interpolator/fast_out_slow_in" />
+
+            <objectAnimator
+                android:propertyName="scaleY"
+                android:valueTo="0.97"
+                android:valueType="floatType"
+                android:duration="100"
+                android:interpolator="@android:interpolator/fast_out_slow_in" />
+
+        </set>
+    </item>
+
+    <!-- DEFAULT (released) state — return to rest -->
+    <item>
+        <set android:ordering="together">
+
+            <objectAnimator
+                android:propertyName="elevation"
+                android:valueTo="2dp"
+                android:valueType="floatType"
+                android:duration="200"
+                android:interpolator="@android:interpolator/linear_out_slow_in" />
+
+            <objectAnimator
+                android:propertyName="scaleX"
+                android:valueTo="1.0"
+                android:valueType="floatType"
+                android:duration="200"
+                android:interpolator="@android:interpolator/linear_out_slow_in" />
+
+            <objectAnimator
+                android:propertyName="scaleY"
+                android:valueTo="1.0"
+                android:valueType="floatType"
+                android:duration="200"
+                android:interpolator="@android:interpolator/linear_out_slow_in" />
+
+        </set>
+    </item>
+
+</selector>

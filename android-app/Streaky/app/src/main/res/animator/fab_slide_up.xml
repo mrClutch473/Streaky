@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fab_slide_up.xml — res/animator/
+    ObjectAnimator: brings the FAB back to its resting position + fades in.
+    Used when showing the FAB on scroll-up events.
+-->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="together">
+
+    <objectAnimator
+        android:propertyName="translationY"
+        android:valueTo="0"
+        android:valueType="floatType"
+        android:duration="300"
+        android:interpolator="@android:interpolator/linear_out_slow_in" />
+
+    <objectAnimator
+        android:propertyName="alpha"
+        android:valueTo="1"
+        android:valueType="floatType"
+        android:duration="250"
+        android:interpolator="@android:interpolator/linear_out_slow_in" />
+
+</set>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ic_fire.xml — res/drawable/
+    VectorDrawable: stylised flame icon.
+    Used in AppBar next to the "Streaky" title.
+    Default tint: #FF6B35 (Secondary / streak orange).
+    Size: 24dp × 24dp (standard icon grid).
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="@color/md_theme_dark_secondary">
+
+    <!--
+        Flame path — drawn on a 24×24 viewport.
+        The shape rises from the base (y≈22) to the tip (y≈2),
+        with a concave inner core suggesting heat and motion.
+    -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="
+            M12,2
+            C12,2 7,7 7,12
+            C7,13.5 7.5,15 8.5,16
+            C8,14.5 8.5,13 9.5,12
+            C9.5,14 11,15.5 11,17
+            C11,18.5 10,19.5 10,19.5
+            C10.5,19.8 11.2,20 12,20
+            C15.3,20 18,17.3 18,14
+            C18,10 14,7 14,7
+            C14,9 13,10.5 12,11
+            C12,8.5 13,5 12,2
+            Z" />
+
+    <!-- Inner highlight for depth -->
+    <path
+        android:fillColor="#FFCC80"
+        android:pathData="
+            M12,8
+            C12,8 10,10.5 10,13
+            C10,14.5 10.8,15.5 12,16
+            C13.2,15.5 14,14.5 14,13
+            C14,10.5 12,8 12,8
+            Z" />
+
+</vector>

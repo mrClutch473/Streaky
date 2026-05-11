@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_habit.xml — Streaky · Habit Card
+    ───────────────────────────────────────────────────────────────────────────
+    MaterialCardView  (root)
+    └── ConstraintLayout  (padding 16dp)
+        ├── [accent border]  View  (4dp · left edge · visible only when done)
+        ├── [left]  habitIconBackground  ← round rect bg
+        │           habitIcon           ← emoji TextView
+        ├── [centre] habitName          ← titleMedium
+        │            habitStreak        ← labelMedium / secondary
+        └── [right]  completeButton     ← custom circle button (48dp)
+
+    Visual states are driven by data binding / code — NOT by XML selectors —
+    so the layout stays clean and all transitions are Kotlin-animated.
+    ───────────────────────────────────────────────────────────────────────────
+-->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/habitCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="@color/md_theme_dark_surface"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardMaxElevation="12dp"
+    app:strokeWidth="0dp"
+    app:strokeColor="@color/md_theme_dark_primary"
+    android:stateListAnimator="@animator/card_state_animator"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <!--
+        ConstraintLayout — the single inner child required by MaterialCardView.
+        All content lives here.
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:minHeight="80dp">
+
+        <!-- ══════════════════════════════════════════════════════════════════
+             GREEN LEFT BORDER — visible only in "completed" state.
+             Animated in/out via scaleX (pivot left) in code.
+             4dp wide · full card height · #4CAF50
+             ══════════════════════════════════════════════════════════════════ -->
+        <View
+            android:id="@+id/completedBorderAccent"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:background="@color/md_theme_dark_primary"
+            android:scaleX="0"
+            android:transformPivotX="0dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:scaleX="1"
+            tools:visibility="visible" />
+
+        <!-- ══════════════════════════════════════════════════════════════════
+             HABIT ICON — circle background + emoji
+             Background: rounded rect 40×40dp, fill #2A2A2A, corner 12dp
+             ══════════════════════════════════════════════════════════════════ -->
+
+        <!-- Icon background container (gives us the rounded square bg) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/habitIconContainer"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            app:cardBackgroundColor="@color/md_theme_dark_surfaceVariant"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp">
+
+            <!-- Emoji icon — centred inside the rounded square -->
+            <TextView
+                android:id="@+id/habitIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="0dp"
+                tools:text="🧘" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ══════════════════════════════════════════════════════════════════
+             HABIT NAME — titleMedium · white
+             Constrained: right of icon, left of completeButton, top-aligned
+             ══════════════════════════════════════════════════════════════════ -->
+        <TextView
+            android:id="@+id/habitName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="@color/md_theme_dark_onBackground"
+            android:textSize="16sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toEndOf="@id/habitIconContainer"
+            app:layout_constraintEnd_toStartOf="@id/completeButton"
+            app:layout_constraintTop_toTopOf="@id/habitIconContainer"
+            app:layout_constraintBottom_toTopOf="@id/habitStreak"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Медитация" />
+
+        <!-- ══════════════════════════════════════════════════════════════════
+             STREAK TEXT
+             Active:   "🔥 7 дней"  — labelMedium · #FF6B35
+             Zero:     "Начни сегодня 🌱" — labelMedium · #9E9E9E
+             ══════════════════════════════════════════════════════════════════ -->
+        <TextView
+            android:id="@+id/habitStreak"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            android:textColor="@color/md_theme_dark_secondary"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="@id/habitName"
+            app:layout_constraintEnd_toStartOf="@id/completeButton"
+            app:layout_constraintTop_toBottomOf="@id/habitName"
+            app:layout_constraintBottom_toBottomOf="@id/habitIconContainer"
+            tools:text="🔥 7 дней" />
+
+        <!-- ══════════════════════════════════════════════════════════════════
+             COMPLETE BUTTON — 48×48dp circle
+             ─────────────────────────────────────────────────────────────────
+             UNCHECKED state (default):
+               • Transparent background
+               • Stroke 2dp · #9E9E9E
+               • Icon: ic_circle_outline (grey)
+
+             CHECKED state (via code):
+               • Solid fill #4CAF50
+               • Stroke 0dp
+               • Icon: ic_check (white)
+               • Elevation bump → glow effect on dark surface
+
+             Shape: perfect circle via shapeAppearance
+             ══════════════════════════════════════════════════════════════════ -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/completeButton"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:icon="@drawable/ic_circle_outline"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="24dp"
+            app:iconTint="@color/md_theme_dark_onSurfaceVariant"
+            app:backgroundTint="@android:color/transparent"
+            app:strokeColor="@color/md_theme_dark_onSurfaceVariant"
+            app:strokeWidth="2dp"
+            app:shapeAppearance="@style/ShapeAppearance.Streaky.Circle"
+            app:rippleColor="@color/ripple_on_surface"
+            android:contentDescription="@string/habit_check_button_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:backgroundTint="@color/md_theme_dark_primary"
+            tools:iconTint="@android:color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

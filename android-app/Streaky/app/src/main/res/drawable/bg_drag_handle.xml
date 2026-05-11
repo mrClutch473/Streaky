@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_drag_handle.xml
+    40×4dp pill for the bottom sheet drag indicator.
+    Colour: #9E9E9E (md_theme_dark_onSurfaceVariant).
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/md_theme_dark_onSurfaceVariant" />
+    <corners android:radius="2dp" />
+
+</shape>

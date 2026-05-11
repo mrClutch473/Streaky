@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Streaky</string>
+
+    <!-- AppBar -->
+    <string name="fire_icon_description">Огонь — стрик</string>
+
+    <!-- FAB -->
+    <string name="fab_add_habit">Привычка</string>
+    <string name="fab_add_habit_description">Добавить привычку</string>
+
+    <!-- Empty state -->
+    <string name="empty_state_emoji">🌱</string>
+    <string name="empty_state_title">Нет привычек</string>
+    <string name="empty_state_subtitle">Нажми + чтобы добавить\nпервую привычку</string>
+
+    <!-- Habit card -->
+    <string name="habit_streak_format">%d дней</string>
+    <string name="habit_completed">Выполнено</string>
+    <string name="habit_mark_done">Отметить</string>
+    <string name="streak_zero_text">Начни сегодня</string>
+
+    <!-- Accessibility -->
+    <string name="habit_check_button_description">Отметить привычку выполненной</string>
+    <string name="streak_count_description">Стрик: %d дней</string>
+
+    <string name="add_habit_title">Новая привычка</string>
+    <string name="habit_name_hint">Название привычки</string>
+    <string name="choose_icon_label">Выбери иконку</string>
+    <string name="add_habit_button">Добавить привычку</string>
+
+    <!-- Stats screen UI strings -->
+    <string name="days_in_a_row">дней подряд</string>
+    <string name="stat_current">Сейчас</string>
+    <string name="stat_record">Рекорд</string>
+    <string name="stat_total">Всего</string>
+    <string name="last_30_days">Последние 30 дней</string>
+    <!-- %1$d = completed days count -->
+    <string name="completion_summary">%1$d дней из 30</string>
+
+    <!-- Delete habit flow -->
+    <string name="delete_habit">Удалить привычку</string>
+    <string name="delete_confirm_title">Удалить привычку?</string>
+    <string name="delete_confirm_message">Весь прогресс и история будут безвозвратно удалены.</string>
+    <string name="cancel">Отмена</string>
+    <string name="delete">Удалить</string>
+
+    <!-- Shared element transition names (must match in both screens) -->
+    <string name="transition_habit_icon" translatable="false">transition_habit_icon</string>
+    <string name="transition_habit_name" translatable="false">transition_habit_name</string>
+    <string name="streak_keep_going_format">🔥 %d — Продли свой стрик!</string>
+</resources>

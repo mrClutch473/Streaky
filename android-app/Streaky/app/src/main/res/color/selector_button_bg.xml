@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    res/color/selector_button_bg.xml
+    Background tint for "Добавить привычку" MaterialButton.
+    Note: ValueAnimator in AddHabitDialog.kt overrides this at runtime
+    for the smooth animated transition. This selector is the static fallback.
+    Enabled  → md_theme_dark_primary (#4CAF50)
+    Disabled → streaky_button_disabled (#2A2A2A)
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:color="@color/md_theme_dark_primary"
+        android:state_enabled="true" />
+
+    <item android:color="@color/streaky_button_disabled" />
+
+</selector>

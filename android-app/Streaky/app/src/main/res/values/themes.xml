@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ══════════════════════════════════════════
+         BASE APP THEME — Material3 Dark
+         ══════════════════════════════════════════ -->
+    <style name="Theme.Streaky" parent="Theme.Material3.Dark.NoActionBar">
+
+        <!-- Colour roles -->
+        <item name="colorPrimary">@color/md_theme_dark_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_dark_onPrimaryContainer</item>
+
+        <item name="colorSecondary">@color/md_theme_dark_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_dark_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_dark_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_dark_onSecondaryContainer</item>
+
+        <item name="colorSurface">@color/md_theme_dark_surface</item>
+        <item name="colorOnSurface">@color/md_theme_dark_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_dark_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_dark_onSurfaceVariant</item>
+
+        <item name="colorError">@color/streaky_error</item>
+        <item name="colorOnError">@color/md_theme_dark_onError</item>
+
+        <item name="android:colorBackground">@color/md_theme_dark_background</item>
+        <item name="colorOnBackground">@color/md_theme_dark_onBackground</item>
+
+        <item name="colorOutline">@color/md_theme_dark_outline</item>
+
+        <!-- Window / status bar -->
+        <item name="android:windowBackground">@color/md_theme_dark_background</item>
+        <item name="android:statusBarColor">@color/md_theme_dark_background</item>
+        <item name="android:navigationBarColor">@color/md_theme_dark_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Shape overrides -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Streaky.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Streaky.MediumComponent</item>
+
+        <!-- Widget overrides -->
+        <item name="extendedFloatingActionButtonStyle">@style/Widget.Streaky.ExtendedFAB</item>
+        <item name="materialCardViewStyle">@style/Widget.Streaky.Card</item>
+
+        <!-- TextInputLayout default style -->
+        <item name="textInputStyle">@style/Widget.Streaky.TextInputLayout</item>
+
+        <!-- BottomSheetDialog — prevents white flash on open -->
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Streaky.BottomSheetDialog</item>
+
+    </style>
+
+    <!-- ══════════════════════════════════════════
+         SHAPE APPEARANCES
+         ══════════════════════════════════════════ -->
+
+    <style name="ShapeAppearance.Streaky.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Streaky.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Used by completeButton in item_habit.xml -->
+    <style name="ShapeAppearance.Streaky.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearance.Streaky.Button" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Streaky.BottomSheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">28dp</item>
+        <item name="cornerSizeTopRight">28dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <!-- ══════════════════════════════════════════
+         BOTTOM SHEET
+         ══════════════════════════════════════════ -->
+
+    <style name="ThemeOverlay.Streaky.BottomSheetDialog"
+        parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/Widget.Streaky.BottomSheet</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <style name="Widget.Streaky.BottomSheet" parent="Widget.Material3.BottomSheet">
+        <!-- Transparent so our layout draws its own background -->
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Streaky.BottomSheet</item>
+    </style>
+
+    <!-- ══════════════════════════════════════════
+         WIDGET OVERRIDES
+         ══════════════════════════════════════════ -->
+
+    <style name="Widget.Streaky" parent="android:Widget" />
+
+    <!-- MaterialCardView -->
+    <style name="Widget.Streaky.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/md_theme_dark_surface</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="rippleColor">@color/ripple_on_surface</item>
+    </style>
+
+    <!-- ExtendedFAB -->
+    <style name="Widget.Streaky.ExtendedFAB">
+        <item name="backgroundTint">@color/md_theme_dark_primary</item>
+        <item name="android:textColor">@color/md_theme_dark_onPrimary</item>
+        <item name="iconTint">@color/md_theme_dark_onPrimary</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Streaky.Button</item>
+        <item name="elevation">6dp</item>
+    </style>
+
+    <!-- Primary filled button -->
+    <style name="Widget.Streaky.Button.Primary" parent="Widget.Material3.Button">
+        <item name="cornerRadius">14dp</item>
+        <item name="backgroundTint">@color/selector_button_bg</item>
+        <item name="android:textColor">@color/selector_button_text</item>
+        <item name="rippleColor">@color/ripple_on_surface</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <!-- Tonal button -->
+    <style name="Widget.Streaky.Button.Tonal" parent="Widget.Material3.Button.TonalButton">
+        <item name="backgroundTint">@color/md_theme_dark_surfaceVariant</item>
+        <item name="android:textColor">@color/md_theme_dark_onSurface</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Streaky.Button</item>
+    </style>
+
+    <!-- TextInputLayout -->
+    <style name="Widget.Streaky.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/selector_outline_color</item>
+        <item name="hintTextColor">@color/selector_hint_color</item>
+        <item name="android:textColorHint">@color/md_theme_dark_onSurfaceVariant</item>
+    </style>
+
+    <!-- ══════════════════════════════════════════
+         ALERT DIALOG (StatsActivity — удаление)
+         ══════════════════════════════════════════ -->
+
+    <style name="ThemeOverlay.Streaky.MaterialAlertDialog"
+        parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:background">@color/streaky_dialog_surface</item>
+        <item name="colorSurface">@color/streaky_dialog_surface</item>
+        <item name="android:textColorPrimary">@color/md_theme_dark_onBackground</item>
+        <item name="android:textColorSecondary">@color/md_theme_dark_onSurfaceVariant</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Streaky.AlertDialog.DestructiveButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Streaky.AlertDialog.NeutralButton</item>
+    </style>
+
+    <style name="Widget.Streaky.AlertDialog.DestructiveButton"
+        parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/streaky_error</item>
+    </style>
+
+    <style name="Widget.Streaky.AlertDialog.NeutralButton"
+        parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/md_theme_dark_onSurfaceVariant</item>
+    </style>
+
+    <!-- ══════════════════════════════════════════
+         TEXT APPEARANCES
+         ══════════════════════════════════════════ -->
+
+    <!-- Невидимый заголовок CollapsingToolbarLayout -->
+    <style name="TextAppearance.Streaky.Transparent" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textColor">#00000000</item>
+    </style>
+
+    <!-- Стрик бейдж — оранжевый, жирный -->
+    <style name="TextAppearance.Streaky.StreakBadge" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textColor">@color/streak_badge_text</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

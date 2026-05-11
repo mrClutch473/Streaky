@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_bottom_sheet.xml
+    Shape drawable applied as background to the NestedScrollView root.
+    Top corners 28dp — matches Material3 BottomSheetDialog spec.
+    Colour matches md_theme_dark_surface (#1E1E1E).
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/md_theme_dark_surface" />
+
+    <corners
+        android:topLeftRadius="28dp"
+        android:topRightRadius="28dp"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp" />
+
+</shape>

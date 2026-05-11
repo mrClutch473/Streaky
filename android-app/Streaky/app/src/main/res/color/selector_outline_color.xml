@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    res/color/selector_outline_color.xml
+    Used by app:boxStrokeColor on TextInputLayout.
+    Focused  → md_theme_dark_primary  (#4CAF50)
+    Error    → streaky_error          (#CF6679)
+    Default  → md_theme_dark_onSurfaceVariant (#9E9E9E)
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:color="@color/md_theme_dark_primary"
+        android:state_focused="true" />
+
+    <item
+        android:color="@color/streaky_error"
+        android:state_hovered="true" />
+
+    <item android:color="@color/md_theme_dark_onSurfaceVariant" />
+
+</selector>
