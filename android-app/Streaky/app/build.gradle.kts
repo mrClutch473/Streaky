@@ -74,4 +74,7 @@ dependencies {
 
     // lifecycleScope — скорее всего уже есть, но на всякий случай:
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+
+    // WorkManager — для планирования ежедневных уведомлений
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 }

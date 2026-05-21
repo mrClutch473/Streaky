@@ -2,6 +2,15 @@ from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint
 from database import Base
 
 
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, unique=True, nullable=False, index=True)
+    hashed_password = Column(String, nullable=False)
+    created_at = Column(String, nullable=False)
+
+
 class Habit(Base):
     __tablename__ = "habits"
 
@@ -9,6 +18,7 @@ class Habit(Base):
     name = Column(String, nullable=False)
     icon = Column(String, default="🎯")
     created_at = Column(String, nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
 
 class Completion(Base):

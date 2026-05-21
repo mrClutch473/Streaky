@@ -29,6 +29,7 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.lifecycle.lifecycleScope
+import com.example.streaky.auth.UserSession
 import com.example.streaky.network.RetrofitClient
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -126,7 +127,10 @@ class StatsActivity : AppCompatActivity() {
     private fun loadStats(habitId: Long) {
         lifecycleScope.launch {
             try {
-                val stats = RetrofitClient.apiService.getHabitStats(habitId)
+                val stats = RetrofitClient.apiService.getHabitStats(
+                    id = habitId,
+                    userId = UserSession.userId
+                )
 
                 bindStatTiles(stats.bestStreak, stats.totalCompletions)
                 buildCalendarGrid(
@@ -215,7 +219,10 @@ class StatsActivity : AppCompatActivity() {
     private fun deleteHabit(habitId: Long) {
         lifecycleScope.launch {
             try {
-                RetrofitClient.apiService.deleteHabit(habitId)
+                RetrofitClient.apiService.deleteHabit(
+                    id = habitId,
+                    userId = UserSession.userId
+                )
                 setResult(RESULT_OK)
                 finishAfterTransition()
             } catch (e: Exception) {

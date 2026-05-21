@@ -105,4 +105,10 @@
     <color name="streaky_icon_card_default">#FF2A2A2A</color>
     <color name="transparent">#00000000</color>
 
+    <color name="streaky_error_surface">#1AEF5350</color>
+
+    <!-- Password strength indicators -->
+    <color name="streaky_warning">#FFFF9800</color>       <!-- amber -->
+    <color name="streaky_warning_light">#FF8BC34A</color> <!-- light green -->
+
 </resources>

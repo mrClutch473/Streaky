@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_splash.xml — Streaky
+    ─────────────────────────────────────────────────────────────────────────────
+    Splash / Loading screen shown on cold start.
+
+    Layout structure:
+        ConstraintLayout (full screen, dark bg)
+        ├── [centre group]  LinearLayout (vertical)
+        │       ├── fire icon  (72dp)
+        │       ├── "Streaky"  (HeadlineLarge · white)
+        │       └── tagline    (BodyMedium · onSurfaceVariant)
+        └── [bottom]  CircularProgressIndicator  (green · 32dp)
+
+    Animations (done in SplashActivity.kt):
+      • Logo group: alpha 0→1, translationY +40→0, duration 500ms, ease decelerate
+      • Tagline: alpha 0→1, 150ms delay
+      • Progress indicator: fade in at 400ms delay
+      • Then navigate to AuthActivity with a crossfade
+    ─────────────────────────────────────────────────────────────────────────────
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_dark_background"
+    android:fitsSystemWindows="true">
+
+    <!-- ══════════════════════════════════════════════════════════
+         CENTRE HERO — fire icon + wordmark + tagline
+         alpha=0 on start; animated in SplashActivity
+         ══════════════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/splashLogoGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:alpha="0"
+        android:translationY="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/progressIndicator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.44">
+
+        <!-- 🔥 Fire icon — large, centred -->
+        <ImageView
+            android:id="@+id/splashFireIcon"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_fire"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter" />
+
+        <!-- "Streaky" wordmark -->
+        <TextView
+            android:id="@+id/splashTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+            android:textColor="@color/md_theme_dark_onBackground"
+            android:textSize="42sp"
+            android:fontFamily="@font/inter_regular"
+            android:letterSpacing="-0.01"
+            android:layout_marginTop="12dp" />
+
+        <!-- Tagline — fades in 150ms after wordmark -->
+        <TextView
+            android:id="@+id/splashTaglineText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Строй привычки. Держи стрик."
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/md_theme_dark_onSurfaceVariant"
+            android:textSize="15sp"
+            android:alpha="0"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════════════════════════
+         BOTTOM — circular progress indicator
+         Appears 400ms after logo, signals background init work.
+         alpha=0 on start; faded in from code.
+         ══════════════════════════════════════════════════════════ -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:alpha="0"
+        app:indicatorColor="@color/md_theme_dark_primary"
+        app:trackColor="@color/md_theme_dark_surfaceVariant"
+        app:indicatorSize="32dp"
+        app:trackThickness="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="56dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

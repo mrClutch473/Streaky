@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_auth.xml — Streaky
+    ─────────────────────────────────────────────────────────────────────────────
+    Auth container: hosts LoginFragment and RegisterFragment via ViewPager2.
+    Users swipe or tap tabs to switch between "Войти" and "Регистрация".
+
+    Layout structure:
+        ConstraintLayout (full screen, dark bg)
+        ├── [top]     app logo row   (fire icon + "Streaky" — compact)
+        ├── [tabs]    TabLayout      (custom pill style, green indicator)
+        ├── [content] ViewPager2     (fills remainder, swipe between fragments)
+        └── [bottom]  divider hint   (subtle "или продолжите как гость")
+
+    AuthActivity.kt wires:
+      TabLayoutMediator(tabLayout, viewPager2) { tab, pos ->
+          tab.text = if (pos == 0) "Войти" else "Регистрация"
+      }.attach()
+    ─────────────────────────────────────────────────────────────────────────────
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_dark_background"
+    android:fitsSystemWindows="true"
+    tools:context=".auth.AuthActivity">
+
+    <!-- ══════════════════════════════════════════════════════════
+         TOP LOGO ROW — compact, 24dp top padding under status bar
+         ══════════════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/authLogoRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_fire"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+            android:textColor="@color/md_theme_dark_onBackground"
+            android:textSize="26sp"
+            android:fontFamily="@font/inter_regular"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════════════════════════
+         WELCOME TEXT — short, motivating
+         ══════════════════════════════════════════════════════════ -->
+    <TextView
+        android:id="@+id/authWelcomeText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Добро пожаловать"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textColor="@color/md_theme_dark_onSurfaceVariant"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/authLogoRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ══════════════════════════════════════════════════════════
+         TAB LAYOUT — "Войти" / "Регистрация"
+         Style: custom pill background (bg_auth_tab_indicator),
+         selected tab: green text, unselected: onSurfaceVariant.
+         ══════════════════════════════════════════════════════════ -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/authTabLayout"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@color/md_theme_dark_surface"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        app:tabBackground="@drawable/bg_auth_tab_selector"
+        app:tabSelectedTextColor="@color/md_theme_dark_primary"
+        app:tabTextColor="@color/md_theme_dark_onSurfaceVariant"
+        app:tabTextAppearance="@style/TextAppearance.Material3.LabelLarge"
+        app:tabIndicatorColor="@color/md_theme_dark_primary"
+        app:tabIndicatorHeight="3dp"
+        app:tabIndicatorFullWidth="false"
+        app:tabRippleColor="@color/ripple_on_surface"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        app:layout_constraintTop_toBottomOf="@id/authWelcomeText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ══════════════════════════════════════════════════════════
+         VIEWPAGER2 — hosts LoginFragment (pos 0) and RegisterFragment (pos 1)
+         offscreenPageLimit=1 keeps both fragments alive for smooth swipe.
+         ══════════════════════════════════════════════════════════ -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/authViewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/authTabLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

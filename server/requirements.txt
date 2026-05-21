@@ -1,3 +1,7 @@
 fastapi
 uvicorn
 sqlalchemy
+bcrypt
+email-validator
+uvicorn
+sqlalchemy
